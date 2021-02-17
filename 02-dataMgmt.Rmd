@@ -1,4 +1,4 @@
-# Part 1. Data Wrangling (#dataMgmt)
+# Part 1. Data Wrangling {#dataMgmt}
 
 This section teaches some tricks and tips for data wrangling using the ```dplyr``` package. It reviews some of the more detailed introduction to ```dplyr``` from BIOL 1002 labs. If you would like to review the lab manual for BIOL 1002, you can access it [here](https://jakep962.github.io/Biol_1002/index.html).
 
@@ -9,7 +9,7 @@ A useful "cheatsheet" to print out and hang by your desk for this module is the 
 
 * install and load the package ```dplyr``` (if you don't remember how to do this, refer to Section 4.10 of the [Biology R Guide](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages)
 
-```{r echo = FALSE}
+```{r echo = FALSE, message = FALSE}
 #install.packages("dplyr")
 library(dplyr)
 ```
@@ -36,10 +36,10 @@ MACPspp_sum <- MACPspp %>%
 
 Use the ```filter``` function in ``dplyr`` to select only those sites that have more than 80 species and use this to create a new dataframe called MACPhotspots. Check Section 2.1.1 of the Manual for [BIOL1002](https://jakep962.github.io/Biol_1002/week1.html#lab1) to review the code. 
 
-**HAND IN** Then try using a function  to find out what the highest species richness is across all sites (**HINT** another word for highest richness is ``max``` richness). Describe what function you used (a code snippet would be fine!)
+**HAND IN** Then try using a function  to find out what the highest species richness is across all sites (**HINT** another word for highest richness is ```max``` richness). Describe what function you used (a code snippet would be fine!)
 
 
-```{r echo = FALSE}
+```{r echo = FALSE, results = 'hide'}
 MACPhotspots <- filter(MACPspp_sum, sppRich > 80)
 max(MACPhotspots$sppRich)
 ```
@@ -63,6 +63,6 @@ EcoR_spp_mean <- summarize(EcoR_spp, mean_rich = mean(sppRich))
 EcoR_spp_se <- summarize(EcoR_spp, se_rich = sd(sppRich))
 ```
 
-# What to hand in for Part 1.
+## What to hand in for Part 1.
 
 Summarize the results from above where it says **HAND IN**. As well, in one or two sentences explain the difference between the ```select``` , ```filter``` and ```mutate``` functions in the package ```dplyr```.

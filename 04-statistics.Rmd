@@ -1,8 +1,8 @@
-# Part 3. Statistical Analysis (#stats)
+# Part 3. Statistical Analysis {#stats}
 
 You will need to install and load package ```vegan```.
 
-```{r echo = FALSE}
+```{r echo = FALSE, message = FALSE}
 #install.packages("vegan")
 library(vegan)
 ```
@@ -55,7 +55,7 @@ spp <- MACPspp[,2:600]
 
 Here is the code to do the ordination of ```spp``` as well as plot it. The default in the plot settings is to use black circles for sites and red ```+``` signs for species.
 
-```{r}
+```{r, message = FALSE}
 ordination_spp <- metaMDS(spp)
 plot(ordination_spp)
 ```
@@ -102,7 +102,7 @@ To plot the fits of elevation, temperature and precipitation on the ordination, 
 ```plot(ord.fit, col = "black")```
 
 
-# Your assignment for Part 3
+## Your assignment for Part 3
 
 1. Describe what you can conclude about the effect of latitude on species richness for the mid-Atlantic Coastal Plain. Is the fit significant? Are there issues with the data that might affect the inferences drawn from the statistical analysis? 
 
