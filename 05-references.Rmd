@@ -1,13 +1,4 @@
-`r if (knitr:::is_html_output()) '
 # References {-} 
 
-
-@article{McMullin2019,
-  title = {Risk assessment and conservation strategies for rare lichen species and communities threatened by sea-level rise in the Mid-Atlantic Coastal Plain},
-  author = {McMullin RT, Wiersma YF, Newmaster SG, Lendemer JC}, 
-  year = {2019},
-  journal = {Biological Conservation},
-  volume = {239}, 
-  doi = {https://doi.org/10.1016/j.biocon.2019.108281},
-}
+McMullin RT, Wiersma YF, Newmaster SG, Lendemer JC. 2019. Risk assessment and conservation strategies for rare lichen species and communities threatened by sea-level rise in the Mid-Atlantic Coastal Plain. Biological Conservation 239: doi: https://doi.org/10.1016/j.biocon.2019.108281
 

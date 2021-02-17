@@ -1,6 +1,6 @@
 # Data for this manual {#data}
 
-We are using three data sets from the Mid-Atlantic Coastal Plain (MACP). An analysis with these data is described in a paper by @McMullin2019. The data sets are available as CSV files on Brightspace and are as described briefly below. 
+We are using three data sets from the Mid-Atlantic Coastal Plain (MACP). An analysis with these data is described in a paper by McMullin et al. (2019). The data sets are available as CSV files on Brightspace and are as described briefly below. 
 
 * MACPsites.csv: a database of site attributes (215 rows; 1 row per site). Attributes are coded as
     + ER: Ecoregion name
@@ -8,6 +8,7 @@ We are using three data sets from the Mid-Atlantic Coastal Plain (MACP). An anal
     + PPT: Average annual precipitation (in mm)
     + TEMP: Average annual temperature (in degrees Celsius)
     + ELEV: Elevation above sea level (in m)
+    
 
 * MACPspp.csv: a species by site matrix. Sites are in rows (215 rows; 1 row per site) and species are columns (599). Full names of species associated with each code are in the Supplemental material to the @McMullin2019 paper. 
 

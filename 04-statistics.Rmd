@@ -11,7 +11,7 @@ library(vegan)
 
  We will be doing a simple Generalized Linear Model (GLM). You could easily do an entire course on GLMs, so this is not even going to begin to scratch the surface of what there is to learn about this type of statistical analysis.
  
-In the paper by @McMullin2019, the authors examined which lichen sites and species might be most threatened by sea level rise. They did not look for other patterns of species distribution. Here we will test whether lichen richness follows the pattern predicted by the latitudinal species gradient that has been observed for other species.
+In the paper by McMullin et al. (2019), the authors examined which lichen sites and species might be most threatened by sea level rise. They did not look for other patterns of species distribution. Here we will test whether lichen richness follows the pattern predicted by the latitudinal species gradient that has been observed for other species.
 
 Here is the code to create a GLM called ```lat_test``` (short for "latitude test"). We're simply testing whether latitude ("Lat") explains species richness with a linear function.
 ```{r}
