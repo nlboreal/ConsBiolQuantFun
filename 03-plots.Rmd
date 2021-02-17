@@ -1,0 +1,47 @@
+# Making Effective Graphs
+
+In this section, we will make a few different types of graphs, using the package ```ggplot2```. You'll also spend some time thinking abou the best way to visualize different types of data.
+
+You will need to install and load the package ```ggplot2``` and you might want to keep the ggplot2 [cheatsheet](https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) handy.
+
+```{r echo = FALSE}
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+We'll start by making a simple barplot of mean species richness using the dataframes we created at the end of @ref(dataMgmt). The package ggplot works with datafames and not vectors (as is the case in ```baseR```). The syntax of ggplot is also very elegant in that you can "layer" on data and themes to an existing plot using the ```+``` symbol at the end of each line (we made use of this when we employed ```ggplot2``` to do GIS-type mapping in the previous [Module](https://nlboreal.github.io/ConservationGIS/) for this course)
+
+```{r}
+ggplot(data = EcoR_spp_mean) +
+  geom_col(mapping= aes(x = ER, y = mean_rich))
+```
+
+You might notice that the text labels on the X-axis are not well-placed. We can adjust this by adding a ```theme``` that specifies the angle at which to display the text. Note that the first two lines of the code chunk below are identical to the chunk above, but with the ```+``` sign added at the end, so that we can add a line of code to add a ```theme``` function.
+
+```{r}
+ggplot(data = EcoR_spp_mean) +
+  geom_col(mapping= aes(x = ER, y = mean_rich)) +
+  theme(axis.text.x = element_text(angle = 90))
+```
+
+To add error bars, one way we could do that is to first add the standard error we calculated in @ref(dataMgmt) to the dataframe that ```ggplot2``` is using, again using a ```dplyr``` function.
+
+```{r}
+EcoR_spp_meanse <- inner_join(EcoR_spp_mean, EcoR_spp_se, "ER")
+```
+
+Then we simply add another ```geom``` function to the code snippet above.
+
+```{r}
+ggplot(data = EcoR_spp_mean) +
+  geom_col(mapping= aes(x = ER, y = mean_rich)) +
+  geom_errorbar(mapping = aes(x = ER, ymin = mean_rich, ymax = mean_rich + se_rich)) + 
+  theme(axis.text.x = element_text(angle = 90))
+```
+
+# Your assignment for Part 2
+
+1. Pick two variables in one of the datasets we're using here that woudl be best shown as a scatterplot. Feel free to join or group data to practcie that skill. Try adjusting the symbology and axis lables for maximum effect. Hand in a copy of your code and the finished figure. Justify what a scatterplot is an appropriate way to display these data. 
+
+1. **For graduate students** In addition to the above step, pick a graph type in ```ggplot2``` that you have never created before (but that perhaps is a way you may want to visualize your own data for your graduate work), and pick the appropriate data from the sets avaialbe here to create a figure. Hand in a copy of your code and the finished figure. Justify why the data chosen fit this kind of figure well. 
+

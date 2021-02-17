@@ -1,0 +1,27 @@
+# Part 3. Statistical Analysis (#stats)
+
+You will need to install and load package ```vegan```.
+
+```{r echo = FALSE}
+install.packages("vegan")
+library(vegan)
+```
+
+## Univariate Analysis
+
+ We will be doing a simple Generalized Linear Model (GLM). You could easily do an entire course on GLMs, so this is not even going to beging to scratch the surface of what there is to learn about this type of statistical anlaysis.
+ 
+In the paper by @McMullin2019, the authors examined which lichen sites and species might be most threatened by sea level rise. They did not look for other patterns of species distirbution. Here we will test whether lichen richness follows the pattern predicted by the latitudinal species gradient that has been observed for other species.
+
+Here is the code to create a GLM called ```lat_test``` (short for "latitude test")
+```{r}
+lat_test <- glm(sppRich ~ Lat, data = MACPall)
+```
+
+
+summary(lat_test)
+
+
+
+
+## Multivariate Analysis

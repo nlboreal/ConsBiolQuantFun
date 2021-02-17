@@ -1,0 +1,69 @@
+# Part 1. Data Managment (#dataMgmt)
+
+This section teaches some tricks and tips for data management using the ```dplyr``` package. It reviews some of the more detailed introduction to ```dplyr``` from BIOL 1002 labs. If you would like to review the lab manual for BIOL 1002, you can access it [here](https://jakep962.github.io/Biol_1002/index.html).
+
+A useful "cheatsheet" to print out and hang by your desk for this module is the dplyr [cheatsheet](https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+
+## Step 1 - Install package and read in files
+
+* install and load the package ```dplyr``` (if you don't remember how to do this, refer to Section 4.10 of the [Biology R Guide](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages)
+
+```{r echo = FALSE}
+install.packages("dplyr")
+library(dplyr)
+```
+
+* read in the three data sets. The code is given below, you can chose to give the dataframes different names, but for ease of following along it would be wise to use the same as here.
+
+```{r}
+MACPsites <- read.csv("MACPsites.csv")
+MACPspp <- read.csv("MACPspp.csv")
+MACPtraits <- read.csv("MACPtraits.csv")
+```
+
+## Step 2: Create a new column and add it to a dataframe
+
+Use the ```mutate``` function in ```dplyr``` to create a column which sums all the species at that site, and writie it to a new dataframe called MACPspp_sum. Note that this is a row-wise function and that I am using the ```pipes``` tool (denoted by the ```%>%``` symbol). If you would like to review using pipes, see Section 2.1.5 of the manual for [BIOL1002](https://jakep962.github.io/Biol_1002/week1.html#lab1).
+
+```{r}
+MACPspp_sum <- MACPspp %>%
+  rowwise() %>%
+  mutate(sppRich = sum(c_across(ABRhyp:XYLnig)))
+```
+
+## Step 3: Querying and filtering the data
+
+Use the ```filter``` function in ``dplyer`` to select only those sites that have more than 80 species and use this to create a new dataframe called MACPhotspots. Check Section 2.1.1 of the Manual for [BIOL1002](https://jakep962.github.io/Biol_1002/week1.html#lab1) to review the code. 
+
+**HAND IN** Then try using a function  to find out what the highest species richness is across all sites (**HINT** another word for highest richnest is ``max``` richness). Decribe what function you used (a code snippet would be fine!)
+
+
+
+```{r echo = FALSE}
+MACPhotspots <- filter
+max(MACPhotspots$sppRich)
+```
+
+## Step 4. Grouping and Joining Data
+
+Because both the MACPsites data and the MACPspp data are arranged in rows, with one row per site, we can combine them into one dataframe that contains both the species and the environment data. We can do it like this:
+
+```{r}
+MACPall <- inner_join(MACPsites, MACPspp_sum, by = "site")
+```
+
+**HAND IN**: How would you confirm that you have done this correctly (there are different ways)?
+
+Sometimes we might want to group and summarize the data in different ways. For example, we might want to group the data by Ecoregion and then see what the mean richness is per ecoregion, to see if some ecoregions have higher richness than others. In the next section we will use these summary data to make some graphs.
+
+```{r}
+EcoR_spp <- group_by(MACPall, ER)
+
+EcoR_spp_mean <- summarize(EcoR_spp, mean_rich = mean(sppRich))
+EcoR_spp_se <- summarize(EcoR_spp, se_rich = sd(sppRich))
+```
+
+# What to hand in for Part 1.
+
+Summarize the results from above where it says **HAND IN**. As well, in one or two sentences explain the difference between the ```select``` , ```filter``` and ```mutate``` functions in ```dplyr```.

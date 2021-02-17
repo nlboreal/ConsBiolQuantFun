@@ -1,8 +1,26 @@
-# Introduction {#intro}
+# Data for this manual {#data}
 
-You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+We are using three data sets from the Mid-Atlantic Coastal Plain (MACP). These data are described in a paper by @McMullin2019. The data sets are available as CSV files on Brightspace and are as described briefly below. 
 
-Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+* MACPsites.csv: a database of site attributes (215 rows; 1 row per site). Attributes are coded as
+    + ER: Ecoregion name
+    + VEG: Vegetation type
+    + PPT: Average annual precipitation (in mm)
+    + TEMP: Average annual temperature (in degrees Celsius)
+    + ELEV: Elevation above sea level (in m)
+
+* MACPspp.csv: a species by site matrix. Sites are in rows (215 rows; 1 row per site) and species are columns (599). Full names of species associated with each code are in the Supplemental material to the @McMullin2019 paper. 
+
+* MACPtraits.csv: a species by traits matrix. Species are rows (599 rows; 1 row per species) with 4 columns of trait categories. Traits are
+    + Photobiont: indicates which algae or cyanobacteria is the photobiont partner for that lichen
+    + Reproductive.Mode: indicates how the lichen reproduceds
+    + Reproductive.Structure: indicates what kind of reprodcutive structure(s) that species has
+    + Substrate: indicates what kind of substrate this species is usually found on
+    
+
+
+
+
 
 ```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
 par(mar = c(4, 4, .1, .1))
@@ -18,4 +36,4 @@ knitr::kable(
 )
 ```
 
-You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
