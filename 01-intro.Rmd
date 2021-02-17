@@ -1,6 +1,6 @@
 # Data for this manual {#data}
 
-We are using three data sets from the Mid-Atlantic Coastal Plain (MACP). These data are described in a paper by @McMullin2019. The data sets are available as CSV files on Brightspace and are as described briefly below. 
+We are using three data sets from the Mid-Atlantic Coastal Plain (MACP). An analysis with these data is described in a paper by @McMullin2019. The data sets are available as CSV files on Brightspace and are as described briefly below. 
 
 * MACPsites.csv: a database of site attributes (215 rows; 1 row per site). Attributes are coded as
     + ER: Ecoregion name
@@ -22,18 +22,5 @@ We are using three data sets from the Mid-Atlantic Coastal Plain (MACP). These d
 
 
 
-```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
-```
-
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
-
-```{r nice-tab, tidy=FALSE}
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
 
 

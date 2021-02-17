@@ -1,15 +1,15 @@
-# Making Effective Graphs
+# Part 2. Making Effective Graphs (#graphs)
 
-In this section, we will make a few different types of graphs, using the package ```ggplot2```. You'll also spend some time thinking abou the best way to visualize different types of data.
+In this section, we will make a few different types of graphs, using the package ```ggplot2```. You'll also spend some time thinking about the best way to visualize different types of data.
 
 You will need to install and load the package ```ggplot2``` and you might want to keep the ggplot2 [cheatsheet](https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) handy.
 
 ```{r echo = FALSE}
-install.packages("ggplot2")
+#install.packages("ggplot2")
 library(ggplot2)
 ```
 
-We'll start by making a simple barplot of mean species richness using the dataframes we created at the end of @ref(dataMgmt). The package ggplot works with datafames and not vectors (as is the case in ```baseR```). The syntax of ggplot is also very elegant in that you can "layer" on data and themes to an existing plot using the ```+``` symbol at the end of each line (we made use of this when we employed ```ggplot2``` to do GIS-type mapping in the previous [Module](https://nlboreal.github.io/ConservationGIS/) for this course)
+We'll start by making a simple barplot of mean species richness using the dataframes we created at the end of @ref(dataMgmt). The package ggplot works with datafames and not vectors (as is the case when using the ```plot``` function in ```baseR```). The syntax of ggplot is also very elegant in that you can "layer" on data and themes to an existing plot using the ```+``` symbol at the end of each line -- we made use of this when we employed ```ggplot2``` to do GIS-type mapping in the previous [Module](https://nlboreal.github.io/ConservationGIS/) for this course).
 
 ```{r}
 ggplot(data = EcoR_spp_mean) +
@@ -30,10 +30,10 @@ To add error bars, one way we could do that is to first add the standard error w
 EcoR_spp_meanse <- inner_join(EcoR_spp_mean, EcoR_spp_se, "ER")
 ```
 
-Then we simply add another ```geom``` function to the code snippet above.
+Then we simply add another ```geom``` function to the code snippet above, and adjust the ```data = ``` code to reflect the new set with the standard error column added.
 
 ```{r}
-ggplot(data = EcoR_spp_mean) +
+ggplot(data = EcoR_spp_meanse) +
   geom_col(mapping= aes(x = ER, y = mean_rich)) +
   geom_errorbar(mapping = aes(x = ER, ymin = mean_rich, ymax = mean_rich + se_rich)) + 
   theme(axis.text.x = element_text(angle = 90))
@@ -41,7 +41,7 @@ ggplot(data = EcoR_spp_mean) +
 
 # Your assignment for Part 2
 
-1. Pick two variables in one of the datasets we're using here that woudl be best shown as a scatterplot. Feel free to join or group data to practcie that skill. Try adjusting the symbology and axis lables for maximum effect. Hand in a copy of your code and the finished figure. Justify what a scatterplot is an appropriate way to display these data. 
+1. Pick two variables in one of the datasets we're using here that would be best shown as a scatterplot. Feel free to join or group data from any of the 3 datasets to pracitse your data wrangling skills. Try adjusting the symbology and axis labels for maximum effect. Hand in a copy of your code and the finished figure. Justify why a scatterplot is an appropriate way to display these data. 
 
-1. **For graduate students** In addition to the above step, pick a graph type in ```ggplot2``` that you have never created before (but that perhaps is a way you may want to visualize your own data for your graduate work), and pick the appropriate data from the sets avaialbe here to create a figure. Hand in a copy of your code and the finished figure. Justify why the data chosen fit this kind of figure well. 
+1. **For graduate students (and ambitious undergrads)** In addition to the above step, pick a graph type in ```ggplot2``` that you have never created before (but that perhaps is a way you may want to visualize your own data for your graduate work), and pick the appropriate data from one or more of the sets avaialable here to create a figure. Hand in a copy of your code and the finished figure. Justify why the data chosen fit this kind of figure well. 
 

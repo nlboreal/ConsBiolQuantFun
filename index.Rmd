@@ -21,7 +21,7 @@ In this three-week module, we will carry out a few exercise that mimics some of 
 
 1. Data management (with an introduction to the ```dplyr``` package)
 1. Plotting data effectively (with an introduction to the ```ggplot2``` package)
-1. Univariate and multivariate statisticla analysis (with an introduction to the ```vegan``` package)
+1. Univariate and multivariate statistical analysis (with an introduction to the ```vegan``` package)
 
 
 
