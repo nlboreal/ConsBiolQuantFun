@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Part 2. Making Effective Graphs | Introduction to Quantitative Techniques in R for Conservation Biology</title>
+  <meta name="description" content="This is a manual for the Quantitative Techniques Module in BIOL 4651/7944 (Conservation in Practice)" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Part 2. Making Effective Graphs | Introduction to Quantitative Techniques in R for Conservation Biology" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a manual for the Quantitative Techniques Module in BIOL 4651/7944 (Conservation in Practice)" />
+  <meta name="github-repo" content="rstudio/ConsBiolQuantFun" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Part 2. Making Effective Graphs | Introduction to Quantitative Techniques in R for Conservation Biology" />
+  
+  <meta name="twitter:description" content="This is a manual for the Quantitative Techniques Module in BIOL 4651/7944 (Conservation in Practice)" />
+  
+
+<meta name="author" content="Dr. Yolanda Wiersma" />
+
+
+<meta name="date" content="2021-02-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="dataMgmt.html"/>
+<link rel="next" href="stats.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">AIntroduction to Quantitative Techniques in R for Conservation Biology</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Data for this manual</a></li>
+<li class="chapter" data-level="3" data-path="dataMgmt.html"><a href="dataMgmt.html"><i class="fa fa-check"></i><b>3</b> Part 1. Data Wrangling</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataMgmt.html"><a href="dataMgmt.html#step-1---install-package-and-read-in-files"><i class="fa fa-check"></i><b>3.1</b> Step 1 - Install package and read in files</a></li>
+<li class="chapter" data-level="3.2" data-path="dataMgmt.html"><a href="dataMgmt.html#step-2-create-a-new-column-and-add-it-to-a-dataframe"><i class="fa fa-check"></i><b>3.2</b> Step 2: Create a new column and add it to a dataframe</a></li>
+<li class="chapter" data-level="3.3" data-path="dataMgmt.html"><a href="dataMgmt.html#step-3-querying-and-filtering-the-data"><i class="fa fa-check"></i><b>3.3</b> Step 3: Querying and filtering the data</a></li>
+<li class="chapter" data-level="3.4" data-path="dataMgmt.html"><a href="dataMgmt.html#step-4.-grouping-and-joining-data"><i class="fa fa-check"></i><b>3.4</b> Step 4. Grouping and Joining Data</a></li>
+<li class="chapter" data-level="3.5" data-path="dataMgmt.html"><a href="dataMgmt.html#what-to-hand-in-for-part-1."><i class="fa fa-check"></i><b>3.5</b> What to hand in for Part 1.</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>4</b> Part 2. Making Effective Graphs</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="graphs.html"><a href="graphs.html#your-assignment-for-part-2"><i class="fa fa-check"></i><b>4.1</b> Your assignment for Part 2</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Part 3. Statistical Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="stats.html"><a href="stats.html#univariate-analysis"><i class="fa fa-check"></i><b>5.1</b> Univariate Analysis</a></li>
+<li class="chapter" data-level="5.2" data-path="stats.html"><a href="stats.html#multivariate-analysis"><i class="fa fa-check"></i><b>5.2</b> Multivariate Analysis</a></li>
+<li class="chapter" data-level="5.3" data-path="stats.html"><a href="stats.html#your-assignment-for-part-3"><i class="fa fa-check"></i><b>5.3</b> Your assignment for Part 3</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Quantitative Techniques in R for Conservation Biology</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="graphs" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Part 2. Making Effective Graphs</h1>
+<p>In this section, we will make a few different types of graphs, using the package <code>ggplot2</code>. You’ll also spend some time thinking about the best way to visualize different types of data.</p>
+<p>You will need to install and load the package <code>ggplot2</code> and you might want to keep the ggplot2 <a href="https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">cheatsheet</a> handy.</p>
+<p>We’ll start by making a simple barplot of mean species richness using the dataframes we created at the end of <a href="dataMgmt.html#dataMgmt">3</a>. The package ggplot works with datafames and not vectors (as is the case when using the <code>plot</code> function in <code>baseR</code>). The syntax of ggplot is also very elegant in that you can “layer” on data and themes to an existing plot using the <code>+</code> symbol at the end of each line – we made use of this when we employed <code>ggplot2</code> to do GIS-type mapping in the previous <a href="https://nlboreal.github.io/ConservationGIS/">Module</a> for this course).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="graphs.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> EcoR_spp_mean) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="graphs.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">mapping=</span> <span class="fu">aes</span>(<span class="at">x =</span> ER, <span class="at">y =</span> mean_rich))</span></code></pre></div>
+<p><img src="ConsBiolQuantFun_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>You might notice that the text labels on the X-axis are not well-placed. We can adjust this by adding a <code>theme</code> that specifies the angle at which to display the text. Note that the first two lines of the code chunk below are identical to the chunk above, but with the <code>+</code> sign added at the end, so that we can add a line of code to add a <code>theme</code> function.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="graphs.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> EcoR_spp_mean) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="graphs.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">mapping=</span> <span class="fu">aes</span>(<span class="at">x =</span> ER, <span class="at">y =</span> mean_rich)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="graphs.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code></pre></div>
+<p><img src="ConsBiolQuantFun_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>To add error bars, one way we could do that is to first add the standard error we calculated in <a href="dataMgmt.html#dataMgmt">3</a> to the dataframe that <code>ggplot2</code> is using, again using a <code>dplyr</code> function.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="graphs.html#cb7-1" aria-hidden="true" tabindex="-1"></a>EcoR_spp_meanse <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(EcoR_spp_mean, EcoR_spp_se, <span class="st">&quot;ER&quot;</span>)</span></code></pre></div>
+<p>Then we simply add another <code>geom</code> function to the code snippet above, and adjust the <code>data =</code> code to reflect the new set with the standard error column added.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="graphs.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> EcoR_spp_meanse) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="graphs.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">mapping=</span> <span class="fu">aes</span>(<span class="at">x =</span> ER, <span class="at">y =</span> mean_rich)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="graphs.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> ER, <span class="at">ymin =</span> mean_rich, <span class="at">ymax =</span> mean_rich <span class="sc">+</span> se_rich)) <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="graphs.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code></pre></div>
+<p><img src="ConsBiolQuantFun_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div id="your-assignment-for-part-2" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Your assignment for Part 2</h2>
+<ol style="list-style-type: decimal">
+<li><p>Pick two variables in one of the datasets we’re using here that would be best shown as a scatterplot. Feel free to join or group data from any of the 3 datasets to pracitse your data wrangling skills. Try adjusting the symbology and axis labels for maximum effect. Hand in a copy of your code and the finished figure. Justify why a scatterplot is an appropriate way to display these data.</p></li>
+<li><p><strong>For graduate students (and ambitious undergrads)</strong> In addition to the above step, pick a graph type in <code>ggplot2</code> that you have never created before (but that perhaps is a way you may want to visualize your own data for your graduate work), and pick the appropriate data from one or more of the sets avaialable here to create a figure. Hand in a copy of your code and the finished figure. Justify why the data chosen fit this kind of figure well.</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dataMgmt.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stats.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-plots.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ConsBiolQuantFun.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

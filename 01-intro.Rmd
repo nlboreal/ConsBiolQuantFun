@@ -16,7 +16,7 @@ We are using three data sets from the Mid-Atlantic Coastal Plain (MACP). An anal
     + Photobiont: indicates which algae or cyanobacteria is the photobiont partner for that lichen
     + Reproductive.Mode: indicates how the lichen reproduceds
     + Reproductive.Structure: indicates what kind of reprodcutive structure(s) that species has
-    + Substrate: indicates what kind of substrate this species is usually found on
+    + Substrate: indicates what kind of substrate this species is usually found on. These are somewhat technical terms that refer to substrates like soil, trees, rocks, dead wood, fungi or other lichens.
     
 
 

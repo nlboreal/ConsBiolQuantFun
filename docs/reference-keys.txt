@@ -1,0 +1,14 @@
+introduction
+data
+dataMgmt
+step-1---install-package-and-read-in-files
+step-2-create-a-new-column-and-add-it-to-a-dataframe
+step-3-querying-and-filtering-the-data
+step-4.-grouping-and-joining-data
+what-to-hand-in-for-part-1.
+graphs
+your-assignment-for-part-2
+stats
+univariate-analysis
+multivariate-analysis
+your-assignment-for-part-3

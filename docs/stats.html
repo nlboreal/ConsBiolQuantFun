@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Part 3. Statistical Analysis | Introduction to Quantitative Techniques in R for Conservation Biology</title>
+  <meta name="description" content="This is a manual for the Quantitative Techniques Module in BIOL 4651/7944 (Conservation in Practice)" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Part 3. Statistical Analysis | Introduction to Quantitative Techniques in R for Conservation Biology" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a manual for the Quantitative Techniques Module in BIOL 4651/7944 (Conservation in Practice)" />
+  <meta name="github-repo" content="rstudio/ConsBiolQuantFun" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Part 3. Statistical Analysis | Introduction to Quantitative Techniques in R for Conservation Biology" />
+  
+  <meta name="twitter:description" content="This is a manual for the Quantitative Techniques Module in BIOL 4651/7944 (Conservation in Practice)" />
+  
+
+<meta name="author" content="Dr. Yolanda Wiersma" />
+
+
+<meta name="date" content="2021-02-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="graphs.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">AIntroduction to Quantitative Techniques in R for Conservation Biology</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Data for this manual</a></li>
+<li class="chapter" data-level="3" data-path="dataMgmt.html"><a href="dataMgmt.html"><i class="fa fa-check"></i><b>3</b> Part 1. Data Wrangling</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataMgmt.html"><a href="dataMgmt.html#step-1---install-package-and-read-in-files"><i class="fa fa-check"></i><b>3.1</b> Step 1 - Install package and read in files</a></li>
+<li class="chapter" data-level="3.2" data-path="dataMgmt.html"><a href="dataMgmt.html#step-2-create-a-new-column-and-add-it-to-a-dataframe"><i class="fa fa-check"></i><b>3.2</b> Step 2: Create a new column and add it to a dataframe</a></li>
+<li class="chapter" data-level="3.3" data-path="dataMgmt.html"><a href="dataMgmt.html#step-3-querying-and-filtering-the-data"><i class="fa fa-check"></i><b>3.3</b> Step 3: Querying and filtering the data</a></li>
+<li class="chapter" data-level="3.4" data-path="dataMgmt.html"><a href="dataMgmt.html#step-4.-grouping-and-joining-data"><i class="fa fa-check"></i><b>3.4</b> Step 4. Grouping and Joining Data</a></li>
+<li class="chapter" data-level="3.5" data-path="dataMgmt.html"><a href="dataMgmt.html#what-to-hand-in-for-part-1."><i class="fa fa-check"></i><b>3.5</b> What to hand in for Part 1.</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graphs.html"><a href="graphs.html"><i class="fa fa-check"></i><b>4</b> Part 2. Making Effective Graphs</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="graphs.html"><a href="graphs.html#your-assignment-for-part-2"><i class="fa fa-check"></i><b>4.1</b> Your assignment for Part 2</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Part 3. Statistical Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="stats.html"><a href="stats.html#univariate-analysis"><i class="fa fa-check"></i><b>5.1</b> Univariate Analysis</a></li>
+<li class="chapter" data-level="5.2" data-path="stats.html"><a href="stats.html#multivariate-analysis"><i class="fa fa-check"></i><b>5.2</b> Multivariate Analysis</a></li>
+<li class="chapter" data-level="5.3" data-path="stats.html"><a href="stats.html#your-assignment-for-part-3"><i class="fa fa-check"></i><b>5.3</b> Your assignment for Part 3</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Quantitative Techniques in R for Conservation Biology</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="stats" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Part 3. Statistical Analysis</h1>
+<p>You will need to install and load package <code>vegan</code>.</p>
+<div id="univariate-analysis" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Univariate Analysis</h2>
+<p>We will be doing a simple Generalized Linear Model (GLM). You could easily do an entire course on GLMs, so this is not even going to begin to scratch the surface of what there is to learn about this type of statistical analysis.</p>
+<p>In the paper by McMullin et al. (2019), the authors examined which lichen sites and species might be most threatened by sea level rise. They did not look for other patterns of species distribution. Here we will test whether lichen richness follows the pattern predicted by the latitudinal species gradient that has been observed for other species.</p>
+<p>Here is the code to create a GLM called <code>lat_test</code> (short for “latitude test”). We’re simply testing whether latitude (“Lat”) explains species richness with a linear function.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="stats.html#cb9-1" aria-hidden="true" tabindex="-1"></a>lat_test <span class="ot">&lt;-</span> <span class="fu">glm</span>(sppRich <span class="sc">~</span> Lat, <span class="at">data =</span> MACPall)</span></code></pre></div>
+<p>To see the model output, type <code>summary(lat_test)</code>.</p>
+<p>It’s always important to check that your model doesn’t violate assumptions of normality. You can assess this by inspecting the ratio of the null deviance to residual deviance in the model summary.</p>
+<p>You can do this by plotting the model fits. Do this with the code <code>plot(lat_test)</code>. You will see plots of 1) residuals vs. fitted data; 2) a Q-Q plot; 3) Scale-location plot; 4) Residuals vs. Leverage.</p>
+<p>Click the links here to read about how to interpret the <a href="https://stats.stackexchange.com/questions/76226/interpreting-the-residuals-vs-fitted-values-plot-for-verifying-the-assumptions">Residuals vs Fitted plot</a>; the <a href="https://stats.stackexchange.com/questions/101274/how-to-interpret-a-qq-plot">Q-Q plot</a>. If your model does not meet the assumptions of normality, you may need to use a different error structure (e.g., Poisson, logNormal). Going into the whys and hows of that is beyond the scope of this course. The Q-Q plot fit here for <code>lat_test</code> is slightly skewed but we’re going to accept it.</p>
+<p>To make a scatterplot of the data with the line of best fit included, use the code below. Note the new function <code>predict.glm</code> which calls the model we built (<code>lat-test</code>) and builds a predictive line across the range of x-values in our plot. The code chunk below also demonstrates how to add customized x and y axis labels (third “layer” in the ggplot2 code). In the first line (<code>geom_point</code> function), there is a demonstration of how to colour code the points by one of the attributes in the data base (in this case <code>ER</code> for Ecoregion) AND how to use <code>position=jitter</code> to add some slight noise to the data that allows you to see more points by minimizing overlap between points. This makes your graph slightly less accurate on a very fine scale, but enables you to see broader scale patterns. Both of these can be very useful functions.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="stats.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> MACPall) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="stats.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Lat, <span class="at">y =</span> sppRich, <span class="at">colour =</span> ER), <span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="stats.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Lat, <span class="at">y =</span> <span class="fu">predict.glm</span>(lat_test)), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="stats.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;latitude&quot;</span>, <span class="at">y =</span> <span class="st">&quot;lichen species richness&quot;</span>)</span></code></pre></div>
+<p><img src="ConsBiolQuantFun_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="multivariate-analysis" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Multivariate Analysis</h2>
+<p>Multivariate analysis refers to statistical analyses of more than one variable at a time. Again, one could easily fill an entire course on the topic of multivariate statistics, so we’re only going to demonstrate what one kind of multivariate analysis looks like using R. We’re going to do a type of ordination, called a Non-metric multidimensional scaling (or NMDS). There are many types of ordination analysis out there - you may have heard of some of them, some of these are Principal Components Analysis (PCA), Canonical Components Analysis (CCA).</p>
+<p>An ordination simply summarizes multivariate data and projects into a lower dimensional space - usually across two axes. It can be a useful way to see intrinsic patterns in complex data sets, or to simplify data before doing different analyses.</p>
+<p>You will need to load the <code>vegan</code> package to do this analysis.</p>
+<p>To do the NMDS ordination, we use the function <code>metaMDS</code>. We’ll apply it to the species data set. Recall that this is a dataset with 215 rows (one row per site) and 599 species. This is a fairly large data set. The ordination will allow us to see whether certain species are closer together in data space, and if this corresponds to some of the site-level attributes.</p>
+<p>Before we do this, we need to manipulate the <code>MACPspp</code> data frame so that it only includes the species data. You could use a tool from the <code>dplyr</code> package, or since we know the sites are in the first column and there are 600 columns total in <code>MACPspp</code> we can use a simple <code>baseR</code> funcction:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="stats.html#cb11-1" aria-hidden="true" tabindex="-1"></a>spp <span class="ot">&lt;-</span> MACPspp[,<span class="dv">2</span><span class="sc">:</span><span class="dv">600</span>]</span></code></pre></div>
+<p>Here is the code to do the ordination of <code>spp</code> as well as plot it. The default in the plot settings is to use black circles for sites and red <code>+</code> signs for species.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="stats.html#cb12-1" aria-hidden="true" tabindex="-1"></a>ordination_spp <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(spp)</span></code></pre></div>
+<pre><code>## Run 0 stress 0.2011619 
+## Run 1 stress 0.2011618 
+## ... New best solution
+## ... Procrustes: rmse 0.0001526031  max resid 0.001597708 
+## ... Similar to previous best
+## Run 2 stress 0.2140844 
+## Run 3 stress 0.2051861 
+## Run 4 stress 0.2027495 
+## Run 5 stress 0.2025941 
+## Run 6 stress 0.2015875 
+## ... Procrustes: rmse 0.01716666  max resid 0.2302712 
+## Run 7 stress 0.2066741 
+## Run 8 stress 0.205073 
+## Run 9 stress 0.2065044 
+## Run 10 stress 0.2033103 
+## Run 11 stress 0.2010589 
+## ... New best solution
+## ... Procrustes: rmse 0.005617899  max resid 0.07903478 
+## Run 12 stress 0.2055039 
+## Run 13 stress 0.2080301 
+## Run 14 stress 0.2010597 
+## ... Procrustes: rmse 0.000268988  max resid 0.003849411 
+## ... Similar to previous best
+## Run 15 stress 0.2011619 
+## ... Procrustes: rmse 0.005585886  max resid 0.07858387 
+## Run 16 stress 0.2447931 
+## Run 17 stress 0.2065044 
+## Run 18 stress 0.2064097 
+## Run 19 stress 0.2650103 
+## Run 20 stress 0.2120983 
+## *** Solution reached</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="stats.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ordination_spp)</span></code></pre></div>
+<p><img src="ConsBiolQuantFun_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>We can adjust this using the function <code>display</code>. Play around with the code below to see how you can change the plot.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="stats.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ordination_spp, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>)</span>
+<span id="cb15-2"><a href="stats.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(ordination_spp, <span class="at">display =</span> <span class="st">&quot;spec&quot;</span>, <span class="at">cex =</span> <span class="fl">0.7</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="ConsBiolQuantFun_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>The <code>text</code> function adds the species names. There are so many that they become illegible. You could try adjusting the font size, or if this were your own data, you might apply 2-letter species codes, if possible.</p>
+<p>Often we want to layer other information on an ordination to better see pattern. For example, we might want to add convex hulls around the site points that are from the same ecoregion. This will let us see whether some ecoregions have species that are unique to them (the hull will be isolated from other hulls) or if two or more ecoregions have similar species composition (the hulls will have a lot of overlap).</p>
+<p>Before we do that, we need to strip the “sites” column from the <code>MACPsites</code> dataframe so we have just the environmental variables. We could use the baseR method we did above to create <code>spp</code>, or you could use the <code>select</code> function from the <code>dplyr</code> package.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="stats.html#cb16-1" aria-hidden="true" tabindex="-1"></a>env <span class="ot">&lt;-</span> <span class="fu">select</span>(MACPsites, ER, VEG, PPT, TEMP, ELEV)</span></code></pre></div>
+<p>Then specify to create convex hulls using the ecoregion field (<code>ER</code>) from <code>env</code>:</p>
+<p><code>ordihull(ordination_spp, env$ER, col = 1:4, label = TRUE)</code></p>
+<p>Try the above code, and then see if you can modify it to create convex hulls by vegetation type.</p>
+<p>If you can’t see the hulls because the text labels are too big, change <code>label = TRUE</code> to <code>label = FALSE</code> and run the code again.</p>
+<p>Another data visualization might be to use ellipses instead of convex hulls. You can try it with this code:</p>
+<p><code>ordiellipse(ordination_spp, env$ER, col = 1:4, draw = "polygon")</code></p>
+<p>Finally, we might want to do a test to see how different environmental variables at the sites load onto to the two axis of our ordination. This can start to tell us how what’s happening at the sites might be influencing the species pattern(s).</p>
+<p><code>ord.fit &lt;- envfit(ordination_spp ~ ELEV + PPT + TEMP, data = env, perm = 999)</code></p>
+<p>To see the test output, type <code>ord.fit</code></p>
+<p>To plot the fits of elevation, temperature and precipitation on the ordination, use these to lines of code.</p>
+<p><code>plot(ordination_spp)</code>
+<code>plot(ord.fit, col = "black")</code></p>
+</div>
+<div id="your-assignment-for-part-3" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Your assignment for Part 3</h2>
+<ol style="list-style-type: decimal">
+<li><p>Describe what you can conclude about the effect of latitude on species richness for the mid-Atlantic Coastal Plain. Is the fit significant? Are there issues with the data that might affect the inferences drawn from the statistical analysis?</p></li>
+<li><p>What interpretation can you make from the final ordination plot we made here?</p></li>
+<li><p>Think about a possible hypothesis that <span class="citation"><a href="references.html#ref-McMullin2019" role="doc-biblioref">McMullin RT</a> (<a href="references.html#ref-McMullin2019" role="doc-biblioref">2019</a>)</span> could have tested with these data, but did not.</p></li>
+</ol>
+<ul>
+<li>Write out the hypothesis in words and include a prediction</li>
+<li>Sketch a “toy graph” of how you expect the data to look if the hypothesis is supported</li>
+<li>Identify what kind of statistical test you will apply</li>
+<li>Describe how what steps you need to take with these data to execute the steps (i.e., do you need to do any data wrangling first?). A flow chart or bullet points would be a good way to do this.</li>
+<li>Execute the test. Include a copy of the code, the statistical output and a short interpretation of the hypothesis test.</li>
+</ul>
+<p><strong>For graduate students</strong>: Do the above step twice (i.e., test two different hypotheses). Challenge yourself to try a new test that you may not have done before.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="graphs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-statistics.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ConsBiolQuantFun.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
